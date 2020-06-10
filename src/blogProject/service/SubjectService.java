@@ -68,6 +68,7 @@ public class SubjectService {
 	}
 	
 	public ArrayList<Subject> getSubjectListAll() {
+		System.out.println("subejctService.getSubjectListAll()");
 		subjectDao = new SubjectDao();
 		postsDao = new PostsDao();
 		ArrayList<Subject> list = null;
@@ -78,6 +79,7 @@ public class SubjectService {
 			list = subjectDao.selectSubjectListAll(conn);
 			for(Subject subject : list) {
 				subject.setSubjectCount(postsDao.countPostsBySubject(conn, subject.getSubjectName()));
+				System.out.println(subject.getSubjectCount() + " <----------subject size");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

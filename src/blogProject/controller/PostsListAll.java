@@ -31,6 +31,7 @@ public class PostsListAll extends HttpServlet {
 			request.setAttribute("page", map.get("page"));
 			subjectService = new SubjectService();
 			ArrayList<Subject> subjectList = subjectService.getSubjectListAll();
+			System.out.println(subjectList.size() + " <---subject size");
 			request.setAttribute("subjectListAll", subjectList);
 			request.getRequestDispatcher("/WEB-INF/views/postsListAll.jsp").forward(request, response);
 		} else {

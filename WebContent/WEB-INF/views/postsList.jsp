@@ -136,30 +136,32 @@
 	            </table>
 	        </div>
 	        <!-- 페이징 -->
-	        <div>
-	        	<ul class="pagination"  style="justify-content: center;">
-					<c:if test="${page.currentPageGroup>1 }">
-						<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/PostsList?subjectName=${subjectName}&currentPage=${page.currentPageGroup-page.pagePerGroup}"><i class="fas fa-chevron-left"></i></a></li>
-					</c:if>
-					<c:set var="doneLoop" value="false"/>
-					<c:forEach begin="${page.currentPageGroup}" end="${page.currentPageGroup+page.pagePerGroup-1}" step="1" varStatus="stats">
-						<c:if test="${not doneLoop}">
-							<c:if test="${(stats.index)==page.currentPage}">
-								<li class="page-item active"><a class="page-link">${page.currentPage}</a></li>
-							</c:if>
-							<c:if test="${(stats.index)!=page.currentPage}">
-								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/PostsList?subjectName=${subjectName}&currentPage=${(stats.index)}">${(stats.index)}</a></li>
-							</c:if>
-							<c:if test="${stats.index==page.lastPage}">
-								<c:set var="doneLoop" value="true"/>
-							</c:if>
+	        <c:if test="${page.totalRow > 0}">
+		        <div>
+		        	<ul class="pagination"  style="justify-content: center;">
+						<c:if test="${page.currentPageGroup>1 }">
+							<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/PostsList?subjectName=${subjectName}&currentPage=${page.currentPageGroup-page.pagePerGroup}"><i class="fas fa-chevron-left"></i></a></li>
 						</c:if>
-					</c:forEach>
-					<c:if test="${page.currentPageGroup<page.lastPageGroup }">
-						<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/PostsList?subjectName=${subjectName}&currentPage=${page.currentPageGroup+page.pagePerGroup}"><i class="fas fa-chevron-right"></i></a></li>
-					</c:if>
-				</ul>
-	        </div>
+						<c:set var="doneLoop" value="false"/>
+						<c:forEach begin="${page.currentPageGroup}" end="${page.currentPageGroup+page.pagePerGroup-1}" step="1" varStatus="stats">
+							<c:if test="${not doneLoop}">
+								<c:if test="${(stats.index)==page.currentPage}">
+									<li class="page-item active"><a class="page-link">${page.currentPage}</a></li>
+								</c:if>
+								<c:if test="${(stats.index)!=page.currentPage}">
+									<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/PostsList?subjectName=${subjectName}&currentPage=${(stats.index)}">${(stats.index)}</a></li>
+								</c:if>
+								<c:if test="${stats.index==page.lastPage}">
+									<c:set var="doneLoop" value="true"/>
+								</c:if>
+							</c:if>
+						</c:forEach>
+						<c:if test="${page.currentPageGroup<page.lastPageGroup }">
+							<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/PostsList?subjectName=${subjectName}&currentPage=${page.currentPageGroup+page.pagePerGroup}"><i class="fas fa-chevron-right"></i></a></li>
+						</c:if>
+					</ul>
+		        </div>
+	        </c:if>
 	    </div>
 	<div class="col-4"></div>
     </div>

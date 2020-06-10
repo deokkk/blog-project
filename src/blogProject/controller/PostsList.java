@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import blogProject.service.PostsService;
+import blogProject.vo.Page;
 import blogProject.vo.Posts;
 
 @WebServlet("/PostsList")
